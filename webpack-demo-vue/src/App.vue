@@ -1,12 +1,10 @@
 <template>
-  <div class="App">
-    Hello World.
-  </div>
+  <div class="App">Hello World.<el-button>默认按钮</el-button></div>
 </template>
 
 <script>
 export default {
-  name: 'App',
+  name: "App",
 
   data() {
     return {};
@@ -15,7 +13,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.App {
-  color: skyblue;
-}
 </style>

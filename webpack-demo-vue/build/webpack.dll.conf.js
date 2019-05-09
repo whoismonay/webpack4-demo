@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin') // 清理打包的文
 module.exports = {
     mode: 'production',
     entry: {
-        vue: ['vue']
+        vue: ['vue'],
     },
     output: {
         filename: '[name].dll.js',
