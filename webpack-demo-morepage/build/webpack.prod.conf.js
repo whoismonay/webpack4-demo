@@ -2,7 +2,6 @@ const path = require('path')
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 将 css 单独打包成文件
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin') // 压缩 css
-
 // 删除未使用的css
 const PurifyCSS = require('purifycss-webpack');
 const glob = require('glob-all');

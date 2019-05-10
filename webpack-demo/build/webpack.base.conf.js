@@ -38,7 +38,7 @@ const generateConfig = env => {
         {
             loader: 'url-loader',
             options: {
-                name: '[name].[hash:8].min.[ext]',
+                name: '[name].[contenthash:8].min.[ext]',
                 limit: 5000,
                 publicPath: 'fonts/',
                 outputPath: 'fonts/'
@@ -50,7 +50,7 @@ const generateConfig = env => {
         {
             loader: 'url-loader',
             options: {
-                name: '[name].[hash:8].min.[ext]',
+                name: '[name].[contenthash:8].min.[ext]',
                 limit: 10000,
                 outputPath: 'images/'
             }
@@ -109,8 +109,8 @@ const generateConfig = env => {
         output: {
             publicPath: env === 'development' ? '/' : './',
             path: path.resolve(__dirname, '..', 'dist'),
-            filename: 'js/[name].[hash:8].bundle.js',
-            chunkFilename: 'js/[name].[hash:8].chunk.js'
+            filename: 'js/[name].[contenthash:8].bundle.js',
+            chunkFilename: 'js/[name].[contenthash:8].chunk.js'
         },
         module: {
             rules: [

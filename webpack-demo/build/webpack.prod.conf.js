@@ -1,5 +1,10 @@
+const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 将 css 单独打包成文件
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin') // 压缩 css
+
+// 删除未使用的css
+const PurifyCSS = require('purifycss-webpack');
+const glob = require('glob-all');
 
 module.exports = {
     mode: 'production',
@@ -18,8 +23,8 @@ module.exports = {
     plugins: [
         // 单独打包出css
         new MiniCssExtractPlugin({
-            filename: 'css/[name].[hash:8].bundle.min.css',
-            chunkFilename: 'css/[name].[hash:8].chunk.min.css'
+            filename: 'css/[name].[contenthash:8].bundle.min.css',
+            chunkFilename: 'css/[name].[contenthash:8].chunk.min.css'
         }),
         // 压缩 css
         new OptimizeCssAssetsPlugin({
@@ -32,6 +37,14 @@ module.exports = {
                 }
             },
             canPrint: true //一个布尔值，指示插件是否可以将消息打印到控制台，默认为 true
+        }),
+        // 清除无用 css
+        new PurifyCSS({
+            paths: glob.sync([
+                // 要做 CSS Tree Shaking 的路径文件
+                path.resolve(__dirname, './*.html'), // 请注意，我们同样需要对 html 文件进行 tree shaking
+                path.resolve(__dirname, './src/*.js')
+            ])
         })
     ]
 }
